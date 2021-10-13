@@ -7,20 +7,28 @@ import webbrowser
 conn = mariadb.connect(
     user="root",
     password="bdhnssnhdb",
-    host="localhost",
+    host="192.168.11.100",
     database="glpi")
 cur = conn.cursor()
 
-# retrieving information and print ilo url on screen
+# Getting machine to find details for:
 
-some_name = sys.argv[1]
+#def start():
+print(f"Welcome to the ilo connector. \n")
+
+#while True:
+some_name = input ("Enter server-name:- ")
 
 cur.execute("SELECT contact_num FROM glpi_computers WHERE name=?", (some_name,))
 
 for contact_num in cur:
-    ilo = contact_num
-    print(f"Connecting to {ilo}")
+    ilo_raw = contact_num
+    ilo = ilo_raw[-1]
+
+    print(f"Connecting to: {ilo}")
 
 # open url in browser:
 
-webbrowser.open_new({ilo})
+url = ilo
+
+webbrowser.open_new(url)
