@@ -14,21 +14,27 @@ cur = conn.cursor()
 # Getting machine to find details for:
 
 #def start():
-print(f"Welcome to the ilo connector. \n")
+while True:
+    print(f"Welcome to the ilo connector. \n")
 
-#while True:
-some_name = input ("Enter server-name:- ")
+    some_name = input ("Enter server-name:- ")
 
-cur.execute("SELECT contact_num FROM glpi_computers WHERE name=?", (some_name,))
+    cur.execute("SELECT contact_num FROM glpi_computers WHERE name=?", (some_name,))
 
-for contact_num in cur:
-    ilo_raw = contact_num
-    ilo = ilo_raw[-1]
+    for contact_num in cur:
+        ilo_raw = contact_num
+        ilo = ilo_raw[-1]
 
     print(f"Connecting to: {ilo}")
 
 # open url in browser:
 
-url = ilo
+    url = ilo
 
-webbrowser.open_new(url)
+    webbrowser.open_new(url)
+
+    check = input("Do you want to connect to another ILO or exit? enter Y to restart or another key to end: ")
+    if check.upper() == "Y": #go back to the top
+        continue    
+    print("Bye...")
+    break #exit
