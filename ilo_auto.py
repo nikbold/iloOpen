@@ -6,7 +6,7 @@ import webbrowser
 
 conn = mariadb.connect(
     user="root",
-    password="bdhnssnhdb",
+    password="PASSWORD",
     host="192.168.11.100",
     database="glpi")
 cur = conn.cursor()
