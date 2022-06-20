@@ -7,6 +7,8 @@ In order for this script to work with python you will need to install the mariad
 
 sudo apt install python3-pip
 
+sudo apt install libmariadb3 libmariadb-dev
+
 pip3 install mariadb
 
 To run the script run it by double clicking the script or running it and following the on screen instructions.
